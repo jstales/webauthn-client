@@ -34,19 +34,6 @@ export default function App() {
     }
   }, []);
 
-  const response = {
-    id: "ADSUllKQmbqdGtpu4sjseh4cg2TxSvrbcHDTBsv4NSSX9...",
-    rawId: ArrayBuffer(59),
-    response: {
-      authenticatorData: ArrayBuffer(191),
-      clientDataJSON: ArrayBuffer(118),
-      signature: ArrayBuffer(70),
-      userHandle: ArrayBuffer(10),
-    },
-    type: "public-key",
-  };
-
-  console.log(response);
   return (
     <div className={theme === "Dark" ? "dark" : ""}>
       <div className="w-screen h-screen antialiased dark:text-slate-400 bg-white text-black dark:bg-slate-900">
@@ -221,15 +208,16 @@ export default function App() {
             ></Button>
           </div>
 
-          {credential && <h4>Credential created with ID {credential.id}</h4>}
-          {authResponse && <h4>Authenticated with ID {authResponse.id}</h4>}
-
-          <p className="italic text-md">
-            Web Authentication is{" "}
-            {!isClientSupported ? "NOT Supported" : "Supported"} by your
-            browser. Your device has {!isUVPlatform ? "NO" : ""} in-built
-            authentication platform.
-          </p>
+          <div className="w-10/12 text-white text-center flex flex-col gap-20">
+            {credential && <p>Credential created with ID {credential.id}</p>}
+            {authResponse && <p>Authenticated with ID {authResponse.id}</p>}
+            <p className="italic text-md">
+              Web Authentication is{" "}
+              {!isClientSupported ? "NOT Supported" : "Supported"} by your
+              browser. Your device has {!isUVPlatform ? "NO" : ""} in-built
+              authentication platform.
+            </p>
+          </div>
         </main>
       </div>
     </div>
